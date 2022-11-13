@@ -15,25 +15,40 @@ contract SmallProxy is Proxy {
         }
     }
 
-    function _implementation() internal view override returns (address implementationAddress) {
+    function _implementation()
+        internal
+        view
+        override
+        returns (address implementationAddress)
+    {
         assembly {
             implementationAddress := sload(_IMPLEMENTATION_SLOT)
         }
     }
 
     // helper function
-    function getDataToTransact(uint256 numberToUpdate) public pure returns (bytes memory) {
+    function getDataToTransact(uint256 numberToUpdate)
+        public
+        pure
+        returns (bytes memory)
+    {
         return abi.encodeWithSignature("setValue(uint256)", numberToUpdate);
     }
 
-    function readStorage() public view returns (uint256 valueAtStorageSlotZero) {
+    function readStorage()
+        public
+        view
+        returns (uint256 valueAtStorageSlotZero)
+    {
+        //Thats YUL lenguage
         assembly {
+            //IN assembly, thats the way to assign values to variebles
             valueAtStorageSlotZero := sload(0)
         }
     }
 }
 
-contract ImplementationA {
+contract implementatonA {
     uint256 public value;
 
     function setValue(uint256 newValue) public {
@@ -41,11 +56,11 @@ contract ImplementationA {
     }
 }
 
-contract ImplementationB {
+contract implementatonB {
     uint256 public value;
 
     function setValue(uint256 newValue) public {
-        value = newValue + 2;
+        value = newValue + 3;
     }
 }
 
