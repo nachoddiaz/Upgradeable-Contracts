@@ -1,0 +1,50 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "@openzeppelin/contracts/proxy/Proxy.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v4.5.0) (proxy/Proxy.sol)\n\npragma solidity ^0.8.0;\n\n/**\n * @dev This abstract contract provides a fallback function that delegates all calls to another contract using the EVM\n * instruction `delegatecall`. We refer to the second contract as the _implementation_ behind the proxy, and it has to\n * be specified by overriding the virtual {_implementation} function.\n *\n * Additionally, delegation to the implementation can be triggered manually through the {_fallback} function, or to a\n * different contract through the {_delegate} function.\n *\n * The success and return data of the delegated call will be returned back to the caller of the proxy.\n */\nabstract contract Proxy {\n    /**\n     * @dev Delegates the current call to `implementation`.\n     *\n     * This function does not return to its internal call site, it will return directly to the external caller.\n     */\n    function _delegate(address implementation) internal virtual {\n        assembly {\n            // Copy msg.data. We take full control of memory in this inline assembly\n            // block because it will not return to Solidity code. We overwrite the\n            // Solidity scratch pad at memory position 0.\n            calldatacopy(0, 0, calldatasize())\n\n            // Call the implementation.\n            // out and outsize are 0 because we don't know the size yet.\n            let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)\n\n            // Copy the returned data.\n            returndatacopy(0, 0, returndatasize())\n\n            switch result\n            // delegatecall returns 0 on error.\n            case 0 {\n                revert(0, returndatasize())\n            }\n            default {\n                return(0, returndatasize())\n            }\n        }\n    }\n\n    /**\n     * @dev This is a virtual function that should be overriden so it returns the address to which the fallback function\n     * and {_fallback} should delegate.\n     */\n    function _implementation() internal view virtual returns (address);\n\n    /**\n     * @dev Delegates the current call to the address returned by `_implementation()`.\n     *\n     * This function does not return to its internall call site, it will return directly to the external caller.\n     */\n    function _fallback() internal virtual {\n        _beforeFallback();\n        _delegate(_implementation());\n    }\n\n    /**\n     * @dev Fallback function that delegates calls to the address returned by `_implementation()`. Will run if no other\n     * function in the contract matches the call data.\n     */\n    fallback() external payable virtual {\n        _fallback();\n    }\n\n    /**\n     * @dev Fallback function that delegates calls to the address returned by `_implementation()`. Will run if call data\n     * is empty.\n     */\n    receive() external payable virtual {\n        _fallback();\n    }\n\n    /**\n     * @dev Hook that is called before falling back to the implementation. Can happen as part of a manual `_fallback`\n     * call, or as part of the Solidity `fallback` or `receive` functions.\n     *\n     * If overriden should call `super._beforeFallback()`.\n     */\n    function _beforeFallback() internal virtual {}\n}\n"
+    },
+    "contracts/Box.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.7;\n\ncontract Box {\n\n    uint256 internal value;\n    event ValueChanged(uint256 newValue);\n\n\n    function store(uint256 newValue) public {\n        value = newValue;\n        emit ValueChanged(newValue);\n    }\n\n    function retrive() public view returns (uint256){\n        return value;\n    }\n\n    function version()  public pure returns (uint256){\n    return 1;\n    }\n}"
+    },
+    "contracts/BoxV2.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.7;\n\ncontract BoxV2 {\n\n    uint256 internal value;\n    event ValueChanged(uint256 newValue);\n\n\n    function store(uint256 newValue) public {\n        value = newValue;\n        emit ValueChanged(newValue);\n    }\n\n    function retrive() public view returns (uint256){\n        return value;\n    }\n\n    function version()  public pure returns (uint256){\n    return 2;\n    }\n\n    function increment() public{\n        value = value +1;\n        emit ValueChanged(value);\n    }\n}"
+    },
+    "contracts/proxy/BoxProxyAdmin.sol": {
+      "content": ""
+    },
+    "contracts/sublesson/DelegateCallExample.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n\n// Be sure to check out solidity-by-example\n// https://solidity-by-example.org/delegatecall\n\npragma solidity ^0.8.7;\n\n// NOTE: Deploy this contract first\ncontract B {\n    // NOTE: storage layout must be the same as contract A\n    uint256 public num;\n    address public sender;\n    uint256 public value;\n\n    function setVars(uint256 _num) public payable {\n        num = _num;\n        sender = msg.sender;\n        value = msg.value;\n    }\n}\n\ncontract A {\n    uint256 public num;\n    address public sender;\n    uint256 public value;\n\n    function setVars(address _contract, uint256 _num) public payable {\n        // A's storage is set, B is not modified.\n        (bool success, bytes memory data) = _contract.delegatecall(\n            abi.encodeWithSignature(\"setVars(uint256)\", _num)\n        );\n    }\n}\n"
+    },
+    "contracts/sublesson/SmallProxy.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.7;\n\nimport \"@openzeppelin/contracts/proxy/Proxy.sol\";\n\ncontract SmallProxy is Proxy {\n    // This is the keccak-256 hash of \"eip1967.proxy.implementation\" subtracted by 1\n    bytes32 private constant _IMPLEMENTATION_SLOT =\n        0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;\n\n    function setImplementation(address newImplementation) public {\n        assembly {\n            sstore(_IMPLEMENTATION_SLOT, newImplementation)\n        }\n    }\n\n    function _implementation()\n        internal\n        view\n        override\n        returns (address implementationAddress)\n    {\n        assembly {\n            implementationAddress := sload(_IMPLEMENTATION_SLOT)\n        }\n    }\n\n    // helper function\n    function getDataToTransact(uint256 numberToUpdate)\n        public\n        pure\n        returns (bytes memory)\n    {\n        return abi.encodeWithSignature(\"setValue(uint256)\", numberToUpdate);\n    }\n\n    function readStorage()\n        public\n        view\n        returns (uint256 valueAtStorageSlotZero)\n    {\n        //Thats YUL lenguage\n        assembly {\n            //IN assembly, thats the way to assign values to variebles\n            valueAtStorageSlotZero := sload(0)\n        }\n    }\n}\n\ncontract implementatonA {\n    uint256 public value;\n\n    function setValue(uint256 newValue) public {\n        value = newValue;\n    }\n}\n\ncontract implementatonB {\n    uint256 public value;\n\n    function setValue(uint256 newValue) public {\n        value = newValue + 3;\n    }\n}\n\n// function setImplementation(){}\n// Transparent Proxy -> Ok, only admins can call functions on the proxy\n// anyone else ALWAYS gets sent to the fallback contract.\n\n// UUPS -> Where all upgrade logic is in the implementation contract, and\n// you can't have 2 functions with the same function selector.\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

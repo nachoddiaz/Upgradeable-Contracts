@@ -4,5 +4,7 @@ pragma solidity ^0.8.7;
 import "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol";
 
 contract BoxProxyAdmin is ProxyAdmin {
-    constructor(address /*Owner*/ ) ProxyAdmin()
+    constructor(
+        address /*Owner*/
+    ) ProxyAdmin() {}
 }

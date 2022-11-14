@@ -2,6 +2,414 @@
   "version": "3.2",
   "log": [
     {
+      "Ownable": {
+        "src": "@openzeppelin/contracts/access/Ownable.sol:20",
+        "inherit": [
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "owner()",
+          "renounceOwnership()",
+          "transferOwnership(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Ownable",
+            "src": "@openzeppelin/contracts/access/Ownable.sol:28"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_owner",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "IERC1822Proxiable": {
+        "src": "@openzeppelin/contracts/interfaces/draft-IERC1822.sol:10",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "proxiableUUID()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "ERC1967Proxy": {
+        "src": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol:15",
+        "version": {
+          "withMetadata": "5a1af09843bd4b61f28a2324b46f53d287babe2b9cc7751a639086691094b674",
+          "withoutMetadata": "5a1af09843bd4b61f28a2324b46f53d287babe2b9cc7751a639086691094b674",
+          "linkedWithoutMetadata": "5a1af09843bd4b61f28a2324b46f53d287babe2b9cc7751a639086691094b674"
+        },
+        "inherit": [
+          "ERC1967Upgrade",
+          "Proxy"
+        ],
+        "libraries": [],
+        "methods": [
+          "(address,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ERC1967Proxy",
+            "src": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol:22"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "ERC1967Upgrade": {
+        "src": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol:19",
+        "inherit": [],
+        "libraries": [
+          "StorageSlot",
+          "Address"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "Proxy": {
+        "src": "@openzeppelin/contracts/proxy/Proxy.sol:16",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "IBeacon": {
+        "src": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "implementation()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "ProxyAdmin": {
+        "src": "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol:13",
+        "version": {
+          "withMetadata": "5251506c03cfcd6f646e9fd732a11fe77431b7b5f33b94af5896366fc4dfb2bf",
+          "withoutMetadata": "be596a19ac88fa77946226033ed18e92e70e7d876fe00beffa3b047f4470f8c3",
+          "linkedWithoutMetadata": "be596a19ac88fa77946226033ed18e92e70e7d876fe00beffa3b047f4470f8c3"
+        },
+        "inherit": [
+          "Ownable",
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "getProxyImplementation(address)",
+          "getProxyAdmin(address)",
+          "changeProxyAdmin(address,address)",
+          "upgrade(address,address)",
+          "upgradeAndCall(address,address,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_owner",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "TransparentUpgradeableProxy": {
+        "src": "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:29",
+        "version": {
+          "withMetadata": "d37c348f43a8d9e728ccd9faa4bfb5d3e384906877ebef8b9a1920af79c29195",
+          "withoutMetadata": "d37c348f43a8d9e728ccd9faa4bfb5d3e384906877ebef8b9a1920af79c29195",
+          "linkedWithoutMetadata": "d37c348f43a8d9e728ccd9faa4bfb5d3e384906877ebef8b9a1920af79c29195"
+        },
+        "inherit": [
+          "ERC1967Proxy",
+          "ERC1967Upgrade",
+          "Proxy"
+        ],
+        "libraries": [],
+        "methods": [
+          "(address,address,bytes)",
+          "admin()",
+          "implementation()",
+          "changeAdmin(address)",
+          "upgradeTo(address)",
+          "upgradeToAndCall(address,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "TransparentUpgradeableProxy",
+            "src": "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:34"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "Address": {
+        "src": "@openzeppelin/contracts/utils/Address.sol:9",
+        "version": {
+          "withMetadata": "8541625d87eea02b0dfd42a77729959aa2bfb8e4fba2aefe33cd43a43333c4b1",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin/contracts/utils/Address.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "Context": {
+        "src": "@openzeppelin/contracts/utils/Context.sol:16",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "StorageSlot": {
+        "src": "@openzeppelin/contracts/utils/StorageSlot.sol:32",
+        "version": {
+          "withMetadata": "109175f1047def8295faaf9018d8e5aac78903e982282a5e77e4b519617026e6",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "BoxProxyAdmin": {
+        "src": "contracts/proxy/BoxProxyAdmin.sol:6",
+        "version": {
+          "withMetadata": "04eee41eacaff4e6cfdbcdc9a43c1558614e6e3d3b6e26a94d79936444455c2e",
+          "withoutMetadata": "3b16836a620ad6c524bcc57f784f1bbd233a9a1603c242b1911d4668c47dc136",
+          "linkedWithoutMetadata": "3b16836a620ad6c524bcc57f784f1bbd233a9a1603c242b1911d4668c47dc136"
+        },
+        "inherit": [
+          "ProxyAdmin",
+          "Ownable",
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "BoxProxyAdmin",
+            "src": "contracts/proxy/BoxProxyAdmin.sol:7"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_owner",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "SmallProxy": {
+        "src": "contracts/sublesson/SmallProxy.sol:7",
+        "version": {
+          "withMetadata": "23c03e04bf23f2e79c75175ab9584113891742da9dc7bbd76f67a5179cb406ff",
+          "withoutMetadata": "cc8929519c25cb8557902f1f262f7ba4f160299f28b62fdacf301fe509183bb2",
+          "linkedWithoutMetadata": "cc8929519c25cb8557902f1f262f7ba4f160299f28b62fdacf301fe509183bb2"
+        },
+        "inherit": [
+          "Proxy"
+        ],
+        "libraries": [],
+        "methods": [
+          "setImplementation(address)",
+          "getDataToTransact(uint256)",
+          "readStorage()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "implementatonA": {
+        "src": "contracts/sublesson/SmallProxy.sol:51",
+        "version": {
+          "withMetadata": "4f6c8e178d1569d4a1d31e4129ec03c5837fa653913485d95dc17e68b6289d42",
+          "withoutMetadata": "e28a3faf2050bad9fc094bce205826ea5664757bc753f9da259f9d7ecc6d1a73",
+          "linkedWithoutMetadata": "e28a3faf2050bad9fc094bce205826ea5664757bc753f9da259f9d7ecc6d1a73"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setValue(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "implementatonA",
+              "src": "contracts/sublesson/SmallProxy.sol:52"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "implementatonB": {
+        "src": "contracts/sublesson/SmallProxy.sol:59",
+        "version": {
+          "withMetadata": "83b9e8157d0d861f5dae651616dedce85d49721d431a5a3b6c500d158c771708",
+          "withoutMetadata": "aee774fc5294846075af5af90eb876e6d2d551ecc07661bf3a23cb3f6d6cd723",
+          "linkedWithoutMetadata": "aee774fc5294846075af5af90eb876e6d2d551ecc07661bf3a23cb3f6d6cd723"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setValue(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "implementatonB",
+              "src": "contracts/sublesson/SmallProxy.sol:60"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      }
+    },
+    {
       "Proxy": {
         "src": "@openzeppelin/contracts/proxy/Proxy.sol:16",
         "inherit": [],
