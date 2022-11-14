@@ -1,0 +1,301 @@
+{
+  "version": "3.2",
+  "log": [
+    {
+      "Proxy": {
+        "src": "@openzeppelin/contracts/proxy/Proxy.sol:16",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "Box": {
+        "src": "contracts/Box.sol:4",
+        "version": {
+          "withMetadata": "633f1e54dd84230666690e1d0a116d105460f5b94de2efd8bd6ec8ec737ddaad",
+          "withoutMetadata": "827e71b97b0fb85e115a5a798485f1aa3fbc14e85b5c1216aefaf6cedc1c3ecc",
+          "linkedWithoutMetadata": "827e71b97b0fb85e115a5a798485f1aa3fbc14e85b5c1216aefaf6cedc1c3ecc"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "store(uint256)",
+          "retrive()",
+          "version()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "Box",
+              "src": "contracts/Box.sol:6"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "BoxV2": {
+        "src": "contracts/BoxV2.sol:4",
+        "version": {
+          "withMetadata": "e7374dc2b465d7a7cb2e9ec689ef8225f8d8b91d6e9a1a26452b7da91f66d460",
+          "withoutMetadata": "2a7c9e0b06af0a5f0cb83026ebfd828209acfeee0044407113fd7a71473ae2b6",
+          "linkedWithoutMetadata": "2a7c9e0b06af0a5f0cb83026ebfd828209acfeee0044407113fd7a71473ae2b6"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "store(uint256)",
+          "retrive()",
+          "version()",
+          "increment()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "BoxV2",
+              "src": "contracts/BoxV2.sol:6"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "A": {
+        "src": "contracts/sublesson/DelegateCallExample.sol:22",
+        "version": {
+          "withMetadata": "54f69f56fb5e8fa75266803449577c26044026ec6cdbbfb6c6c5e739d7498ee6",
+          "withoutMetadata": "72338f54a78e1ed986f40843ebfc6f14e641720e70acfe761977f5fe3cd651cb",
+          "linkedWithoutMetadata": "72338f54a78e1ed986f40843ebfc6f14e641720e70acfe761977f5fe3cd651cb"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setVars(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "contracts/sublesson/DelegateCallExample.sol:29"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "num",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "A",
+              "src": "contracts/sublesson/DelegateCallExample.sol:23"
+            },
+            {
+              "label": "sender",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_address",
+              "contract": "A",
+              "src": "contracts/sublesson/DelegateCallExample.sol:24"
+            },
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "A",
+              "src": "contracts/sublesson/DelegateCallExample.sol:25"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "B": {
+        "src": "contracts/sublesson/DelegateCallExample.sol:9",
+        "version": {
+          "withMetadata": "af1877bd00e510db34642e13dc6c8bc15746d8cf0635eec97b54be6528d85a1d",
+          "withoutMetadata": "b8483e1accf23a0de3888ff20498b159b2fa6d1d1bdf23011615209b5230d5c7",
+          "linkedWithoutMetadata": "b8483e1accf23a0de3888ff20498b159b2fa6d1d1bdf23011615209b5230d5c7"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setVars(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "num",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "B",
+              "src": "contracts/sublesson/DelegateCallExample.sol:11"
+            },
+            {
+              "label": "sender",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_address",
+              "contract": "B",
+              "src": "contracts/sublesson/DelegateCallExample.sol:12"
+            },
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "B",
+              "src": "contracts/sublesson/DelegateCallExample.sol:13"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "SmallProxy": {
+        "src": "contracts/sublesson/SmallProxy.sol:7",
+        "version": {
+          "withMetadata": "79335896b13894bb55604e4b4d6a87f643337119b70edb061b8cf79b8e2da3ba",
+          "withoutMetadata": "cc8929519c25cb8557902f1f262f7ba4f160299f28b62fdacf301fe509183bb2",
+          "linkedWithoutMetadata": "cc8929519c25cb8557902f1f262f7ba4f160299f28b62fdacf301fe509183bb2"
+        },
+        "inherit": [
+          "Proxy"
+        ],
+        "libraries": [],
+        "methods": [
+          "setImplementation(address)",
+          "getDataToTransact(uint256)",
+          "readStorage()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1",
+          "flat": false
+        }
+      },
+      "implementatonA": {
+        "src": "contracts/sublesson/SmallProxy.sol:51",
+        "version": {
+          "withMetadata": "be93fdf989951e5d50cc12df0b5ba1998fcc4cae555040fb27dff63b679d2bad",
+          "withoutMetadata": "e28a3faf2050bad9fc094bce205826ea5664757bc753f9da259f9d7ecc6d1a73",
+          "linkedWithoutMetadata": "e28a3faf2050bad9fc094bce205826ea5664757bc753f9da259f9d7ecc6d1a73"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setValue(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "implementatonA",
+              "src": "contracts/sublesson/SmallProxy.sol:52"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      },
+      "implementatonB": {
+        "src": "contracts/sublesson/SmallProxy.sol:59",
+        "version": {
+          "withMetadata": "3a92f79f5cf780613fed00272bb50c2d820dbbe910a77a78a379cb2e7752b6e4",
+          "withoutMetadata": "aee774fc5294846075af5af90eb876e6d2d551ecc07661bf3a23cb3f6d6cd723",
+          "linkedWithoutMetadata": "aee774fc5294846075af5af90eb876e6d2d551ecc07661bf3a23cb3f6d6cd723"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setValue(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "value",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "implementatonB",
+              "src": "contracts/sublesson/SmallProxy.sol:60"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      }
+    }
+  ]
+}

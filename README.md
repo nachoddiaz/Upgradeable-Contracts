@@ -1,3 +1,15 @@
+#Functioning
+
+1. Upgrade Box1 to Box2
+2. Proxy Box -> proxy Box2
+
+##Ways of proxy 
+  1. Deploy proxy manually
+  2. hardhat-deploy`s built-in proxies
+  3. With OpenZeppelin
+  
+
+
 # Usage
 
 Deploy:
